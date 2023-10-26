@@ -105,7 +105,7 @@ class App extends React.Component
       </main>
         <footer className="m-auto p-8">
           <div className="text-center p-2">
-            Made with TailwindCSS by <a target="_blank" href="https://hellojuninguyen.netlify.app/">juniNguyen.</a>
+            Made with TailwindCSS by <a target="_blank" rel="noreferrer" href="https://hellojuninguyen.netlify.app/">juniNguyen.</a>
             </div>
         </footer>
            </body>
