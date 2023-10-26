@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather+Sans:wght@300&display=swap");
+
+html,
+body {
+  font: system-ui, sans-serif;
+  padding: 2em 0em;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 4rem;
+  font-family: "Lobster", cursive;
+  color: #20601a;
+  text-shadow: #f7cf5e 5px 5px 0px;
+  transform: rotateZ(-4deg);
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: "Lobster", cursive;
+  color: #20601a;
+  background-color: #f7cf5e;
+}
+
+.v {
+  background-color: #9dbf1a;
+  width: 2em;
+  font-family: sans-serif;
+  color: #fff;
+  text-align: center;
+  height: 2em;
+  font-size: 0.5em;
+  line-height: 2em;
+  border-radius: 1em;
+  margin-left: 1em;
+}
