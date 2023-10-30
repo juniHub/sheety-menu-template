@@ -76,12 +76,12 @@ class App extends React.Component
           {Object.keys(groupByCategory).map((category) => (
             
             <div key={category}>
-              <h3 className="border h-12 flex items-center justify-center">{category}</h3>
+              <h3 className="border-dashed border-2 border-green-600 h-12 flex items-center justify-center">{category}</h3>
               
               <ul className="p-4">
                 {groupByCategory[category].map((item) => (
                  
-                <li className="p-4" key={item.item}>
+                <li className="p-4 text-lg" key={item.item}>
 								    <div className="flex items-center justify-center">{item.item}
                     
                     {item.isVegetarian && <div className="v">V</div>}
@@ -89,6 +89,9 @@ class App extends React.Component
 								   
 															
 								    <div className="price flex items-center justify-center">${item.price}</div>
+                    <div className="flex items-center justify-center">
+                    <img className="rounded-lg" src={item.image} alt="item" height="500" width="500"></img>
+                    </div>
                 
 							  </li>
 
