@@ -51,9 +51,9 @@ class App extends React.Component
    
     const { items } = this.state;
 
-    const groupByCategory = items.reduce((group, item) => {
-      const { category } = item;
-      group[category] = (group[category] || []).concat(item);
+    const groupByDate = items.reduce((group, item) => {
+      const { date } = item;
+      group[date] = (group[date] || []).concat(item);
       return group;
     }, {});
      
@@ -64,7 +64,19 @@ class App extends React.Component
                    
       <header className="m-auto p-8">
       <h1 className="logo text-center">&#127861;<br/>Homemade Fresh Meal!</h1>
-			<p className="capitalize text-center text-lg pt-8">Our homemade menu is fresh and organic hand-picked from local farmer markets and can be ready to be delivered within 10 miles or pick-up. Just pick what you like here and let us know one day in advance. Thank you!</p>
+			<p className="capitalize text-center text-lg pt-8">Discover our exquisite homemade menu, crafted with fresh and organic ingredients hand-picked from local farmer markets. We offer the convenience of delivery within a 3-mile radius for orders exceeding $50 or easy pick-up at our Mission-Ash location in Escondido, CA (92027). Simply select your favorites from our menu and kindly notify us one day in advance. Thank you for choosing us</p>
+      <p className="capitalize text-center text-lg pt-6 font-bold">
+      Operating Hours: We're open every Saturday from 8:00 AM to 10:00 PM.
+      <br/>
+
+      Contact Number: You can reach us at 760-638-3143.
+      <br/>
+
+      Payment Options: We accept Zelle and Cash only.
+      <br/>
+
+       Eco-Friendly Packaging: Our to-go boxes are crafted with care using beautiful handcrafted, recycled materials.
+</p>
         
       </header>
 
@@ -73,19 +85,21 @@ class App extends React.Component
         <div className="flex flex-wrap -mx-2 mb-8">
 				  <div className="w-full px-2">
 
-          {Object.keys(groupByCategory).map((category) => (
+          {Object.keys(groupByDate).map((date) => (
             
-            <div key={category}>
-              <h3 className="border-dashed border-2 border-green-600 h-12 flex items-center justify-center">{category}</h3>
+            <div key={date}>
+              <h3 className="border-dashed border-2 border-green-600 h-12 flex items-center justify-center">{date}</h3>
               
               <ul className="p-4">
-                {groupByCategory[category].map((item) => (
+                {groupByDate[date].map((item) => (
                  
                 <li className="p-4 text-lg" key={item.item}>
-								    <div className="flex items-center justify-center">{item.item}
+								    <div className="flex items-center justify-center font-bold">{item.item}
+                                        
+                    {item.isVegetarian && <div className="v">Vegan</div>}
                     
-                    {item.isVegetarian && <div className="v">V</div>}
                     </div>
+                    <div className="flex items-center justify-center">{item.category}</div>
 								   
 															
 								    <div className="price flex items-center justify-center">${item.price}</div>
@@ -108,7 +122,9 @@ class App extends React.Component
       </main>
         <footer className="m-auto p-8">
           <div className="text-center p-2">
-            Made with TailwindCSS by <a target="_blank" rel="noreferrer" href="https://hellojuninguyen.netlify.app/">juniNguyen.</a>
+            Made with ❤ by <a target="_blank" rel="noreferrer" href="https://hellojuninguyen.netlify.app/">juniNguyen.</a>
+            <br/>
+            The images depicted on the website is for illustrative purposes and should not be considered an exact representation of the actual product.
             </div>
         </footer>
            </body>

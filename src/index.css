@@ -30,13 +30,13 @@ h3 {
 
 .v {
   background-color: #9dbf1a;
-  width: 2em;
+  width: 2.6rem;
+  height: 2.6rem;
   font-family: sans-serif;
   color: #fff;
   text-align: center;
-  height: 2em;
-  font-size: 0.5em;
-  line-height: 2em;
-  border-radius: 1em;
-  margin-left: 1em;
+  font-size: 0.8rem;
+  border-radius: 100%;
+  margin-left: 1rem;
+  padding-top: 0.5rem;
 }
