@@ -88,7 +88,7 @@ class App extends React.Component
           {Object.keys(groupByDate).map((date) => (
             
             <div key={date}>
-              <h3 className="border-dashed border-2 border-green-600 h-12 flex items-center justify-center">{date}</h3>
+              <h3 className="border-dashed border-2 border-green-600 h-10 flex items-center justify-center">{date}</h3>
               
               <ul className="p-4">
                 {groupByDate[date].map((item) => (
