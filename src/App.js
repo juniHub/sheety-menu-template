@@ -66,7 +66,7 @@ class App extends React.Component
       <h1 className="logo text-center">&#127861;<br/>Homemade Fresh Meal!</h1>
 			<p className="capitalize text-center text-lg pt-8">Discover our exquisite homemade menu, crafted with fresh and organic ingredients hand-picked from local farmer markets. We offer the convenience of delivery within a 3-mile radius for orders exceeding $50 or easy pick-up at our Mission-Ash location in Escondido, CA (92027). Simply select your favorites from our menu and kindly notify us one day in advance. Thank you for choosing us</p>
       <p className="capitalize text-center text-lg pt-6 font-bold">
-      Operating Hours: We're open every Saturday from 8:00 AM to 10:00 PM.
+      Operating Hours: We're open every Friday and Saturday from 8:00 AM to 10:00 PM.
       <br/>
 
       Contact Number: You can reach us at 760-638-3143.
