@@ -67,6 +67,14 @@ const COLUMNS = {
   image: ["image", "imageurl", "photo", "picture"],
 };
 
+// Whole amounts stay whole ("8"), amounts with cents always show two digits
+// ("4.5" becomes "4.50"). Anything that is not a number is kept as written.
+export const formatPrice = (value) => {
+  const text = value.replace(/^\$\s*/, "").trim();
+  if (text === "" || !/^\d+(\.\d+)?$/.test(text)) return text;
+  return text.includes(".") ? Number(text).toFixed(2) : text;
+};
+
 const isYes = (value) => /^(true|yes|y|1|x)$/i.test(value.trim());
 
 // Only web addresses are used as images, so a stray value cannot become a link to something else.
@@ -90,8 +98,7 @@ export function rowsToItems(rows) {
     .map((row, position) => ({
       id: `${position}-${cell(row, "item")}`,
       item: cell(row, "item"),
-      // Keep the price as written apart from a leading currency sign, so "12.50" stays "12.50".
-      price: cell(row, "price").replace(/^\$\s*/, ""),
+      price: formatPrice(cell(row, "price")),
       isVegetarian: isYes(cell(row, "isVegetarian")),
       category: cell(row, "category"),
       date: cell(row, "date"),
