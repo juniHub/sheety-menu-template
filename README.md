@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Menu Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A one-page site for a small food business: a welcome section, the story behind it, and a weekly menu that is kept in a Google Sheet. Edit the sheet and the site shows the new menu, with no redeploy.
 
-## Available Scripts
+Live demo: https://menu-template-sheetyapi.netlify.app/
 
-In the project directory, you can run:
+## How the menu works
 
-### `npm start`
+The site reads a Google Sheet that has been published as CSV. No API key or third-party service is needed.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. Set up the sheet
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The first row holds the column names. They can be in any order, and capitals and spaces do not matter.
 
-### `npm test`
+| Column | What to put in it | Required |
+| --- | --- | --- |
+| `item` | Name of the dish | Yes |
+| `price` | Price, with or without `$` | No |
+| `is vegetarian` | `TRUE` or `yes` for vegetarian dishes | No |
+| `category` | Mains, Starters, Desserts and so on | No |
+| `date` | The day the dish is offered. Dishes are grouped under each date, in sheet order | No |
+| `image` | Web address of a photo, starting with `https://` | No |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rows without an item name are ignored.
 
-### `npm run build`
+### 2. Publish it
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In Google Sheets: **File > Share > Publish to web**. Choose the menu tab and **Comma-separated values (.csv)**, press **Publish**, and copy the link.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Publishing makes that tab readable by anyone who has the link, so keep only the menu in it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Tell the site where it is
 
-### `npm run eject`
+Either paste the link into `src/config.js`, or set it as the `REACT_APP_MENU_CSV_URL` environment variable on your host (on Netlify: Site configuration > Environment variables) and redeploy.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Until a link is set, the site shows a small sample menu.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Google can take a few minutes to refresh a published sheet after an edit.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Run locally
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm install
+npm start
+```
 
-## Learn More
+## Tech stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React 17 (Create React App with CRACO) and Tailwind CSS 2.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project structure
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `src/App.js`: the page and the menu.
+- `src/lib/menu.js`: reads the published sheet and turns it into menu items.
+- `src/config.js`: the address of the sheet.
+- `src/data/sampleMenu.js`: the sample menu shown before a sheet is connected.
